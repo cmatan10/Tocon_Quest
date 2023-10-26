@@ -17,6 +17,8 @@ import "../Games/GasChecker.sol";
 import "../Games/HashCollision.sol";
 import "../Games/Factory.sol";
 import "../Games/SupportInterface.sol";
+import "../Games/EducatedGuess.sol";
+import "../Games/LimitedTickets.sol";
 
 abstract contract FactoryHelper {
     function checkFallbackGame(address _entity) internal view returns (bool) {
@@ -129,8 +131,24 @@ abstract contract FactoryHelper {
         SupportInterface entity = SupportInterface(_entity);
         return entity.contractInterface();
     }
+    function checkLimitedTicketsGame(address _entity)
+        internal
+        view
+        returns (bool)
+    {
+        LimitedTickets entity = LimitedTickets(_entity);
+        return entity.Count(msg.sender) > 3;
+    }
+    function checkEducatedGuessGame(address _entity)
+        internal
+        view
+        returns (bool)
+    {
+        EducatedGuess entity = EducatedGuess(_entity);
+        return entity.correctGuess();
+    }
 
-    function ChooseGame(uint256 game)
+   function ChooseGame(uint256 game)
         internal
         pure
         returns (bytes memory bytecode)
@@ -152,7 +170,7 @@ abstract contract FactoryHelper {
             bytecode = abi.encodePacked(
                 bytecode_value,
                 abi.encode(
-                    "???"
+                    0x446f6e277420466f72676574205468652050617373776f726421
                 )
             );
         } else if (game == 8) {
@@ -171,6 +189,19 @@ abstract contract FactoryHelper {
             bytecode = type(Factory).creationCode;
         } else if (game == 15) {
             bytecode = type(SupportInterface).creationCode;
+        } else if (game == 16) {
+            bytecode = type(LimitedTickets).creationCode;
+        } else if (game == 17) {
+            bytecode = type(EducatedGuess).creationCode;
+        }
+        return bytecode;
+    }
+
+    function ChooseHackingGame(uint256 game) internal pure returns (bytes memory bytecode) {
+        if (game == 16) {
+            bytecode = type(HacklimitedTickets).creationCode;
+        } else if (game == 17) {
+            bytecode = type(HackEducatedGuess).creationCode;
         }
         return bytecode;
     }

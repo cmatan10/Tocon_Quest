@@ -9,7 +9,7 @@ abstract contract NftHelper is FactoryHelper{
         view
         returns (bool)
     {
-        require((id >= 1 && id <= 15), "Id out of range");
+        require((id >= 1 && id <= 17), "Id out of range");
         if (id == 1) {
             require(
                 checkBytes2Game(_entity),
@@ -84,6 +84,16 @@ abstract contract NftHelper is FactoryHelper{
             require(
                 checkSupportInterfaceGame(_entity),
                 "You must pass level 15"
+            );
+        } else if (id == 16) {
+            require(
+                checkLimitedTicketsGame(_entity),
+                "You must pass level 16"
+            );
+        } else if (id == 17) {
+            require(
+                checkEducatedGuessGame(_entity),
+                "You must pass level 17"
             );
         }
         return true;

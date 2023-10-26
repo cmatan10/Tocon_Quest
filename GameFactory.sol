@@ -5,7 +5,7 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./Helpers/FactoryHelper.sol";
 
-contract GameFactory is Initializable, OwnableUpgradeable {
+contract GameFactory is Initializable, OwnableUpgradeable, FactoryHelper {
 
     bool public paused;
     uint public games;
@@ -13,14 +13,14 @@ contract GameFactory is Initializable, OwnableUpgradeable {
     event DeployInstance(address indexed Instance, address indexed sender, uint indexed game );
 
     function initialize() external initializer{
-        __Ownable_init();
+        __Ownable_init(msg.sender);
         paused = false;
     }
 
     function deploy(uint game) external returns (address addr, address hackAddr) { 
         require(!paused, "The contract is paused!");
         require(game > 0 && game <= games, "There Is No More Games");
-        bytes memory bytecode = FactoryLib.ChooseGame(game);
+        bytes memory bytecode = ChooseGame(game);
         assembly {
 
             addr := create(callvalue(), add(bytecode, 0x20), mload(bytecode))
@@ -28,7 +28,7 @@ contract GameFactory is Initializable, OwnableUpgradeable {
         require(addr != address(0), "deploy failed");
         emit DeployInstance(addr , msg.sender, game);
         
-        bytes memory hackBytecode = FactoryLib.ChooseHackingGame(game);
+        bytes memory hackBytecode = ChooseHackingGame(game);
         if (hackBytecode.length > 0) {
             assembly {
                 hackAddr := create(callvalue(), add(hackBytecode, 0x20), mload(hackBytecode))

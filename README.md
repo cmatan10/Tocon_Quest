@@ -141,6 +141,7 @@ web3.eth.getStorageAt("<contract-address>",0,console.log)
 (type(uint256).max) = Max
 
   (Max - 3)[------------------Max------0-------------------]3
+  <br>
            |                   |       |                   |
         counter     (counter + 3)     (counter + 4)     (counter + 7)   
 

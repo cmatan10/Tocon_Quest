@@ -4,7 +4,7 @@
 - [How to Play](#how-to-play)
 - [Features](#features)
 - [Vision](#vision)
-  [Solutions](#solutions)
+- [Solutions](#solutions)
 
   ---
 

@@ -15,12 +15,4 @@ contract DecodeData{
         require(keccak256(encodedData) == keccak256(encodeStringAndUint), "The Answer is incorrect");
         player = Player(_str, _num);
     }
-    function decodeStringAndUint(bytes memory encodedData) public pure returns (string memory, uint256){
-        (string memory decodedStr, uint256 decodedNum) = abi.decode(
-            encodedData,
-            (string, uint256)
-        );
-        return (decodedStr, decodedNum);
-    }
-    
 }

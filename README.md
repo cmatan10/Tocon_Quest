@@ -4,8 +4,6 @@
 - [How to Play](#how-to-play)
 - [Features](#features)
 - [Vision](#vision)
-- [Team](#team)
-- [Contact](#contact)
   [Solutions](#solutions)
 
   ---

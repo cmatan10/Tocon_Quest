@@ -20,26 +20,6 @@ contract SupportInterface {
         require(id == xorValue, "This is not the interface of the contract");
             contractInterface = true;
     }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-contract blabla{
-            bytes4 public xorValue = bytes4(keccak256("calcFunc1(uint)")) 
-        ^ bytes4(keccak256("calcFunc2(bool)")) 
-        ^ bytes4(keccak256("calculateXOR(bytes4)"));
 }
 
 
@@ -57,28 +37,3 @@ contract blabla{
 
 
 
-
-
-
-
-contract sulotion {
-    
-    function calcFunc1() public pure returns (bytes4) {
-        return bytes4(keccak256("calcFunc1(uint)"));
-    }
-
-    function calcFunc2() public pure returns (bytes4) {
-        return bytes4(keccak256("calcFunc2(bool)"));
-    }
-
-    function calcXOR() public pure returns (bytes4) {
-        return bytes4(keccak256("calculateXOR(bytes4)"));
-    }
-
-    function calculateXOR() public pure returns(bytes4) {
-        bytes4 xorValue = bytes4(keccak256("calcFunc1(uint)")) 
-        ^ bytes4(keccak256("calcFunc2(bool)")) 
-        ^ bytes4(keccak256("calculateXOR(bytes4)"));
-        return xorValue;
-    }
-}

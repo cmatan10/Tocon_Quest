@@ -74,6 +74,4 @@ contract NFTbadge is Initializable, ERC1155Upgradeable, OwnableUpgradeable, NftH
         require(mintRequirements(id, _entity), "mint failed");
         _mint(msg.sender, id, 1, "");
     }
-
-    
 }

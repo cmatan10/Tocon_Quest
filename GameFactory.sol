@@ -15,6 +15,7 @@ contract GameFactory is Initializable, OwnableUpgradeable, FactoryHelper {
     function initialize() external initializer{
         __Ownable_init(msg.sender);
         paused = false;
+        games = 17;
     }
 
     function deploy(uint game) external returns (address addr, address hackAddr) { 

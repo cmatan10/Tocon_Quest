@@ -7,7 +7,12 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./Helpers/NftHelper.sol";
 
-contract NFTbadge is Initializable, ERC1155Upgradeable, OwnableUpgradeable, NftHelper{
+contract NFTbadge is
+    Initializable,
+    ERC1155Upgradeable,
+    OwnableUpgradeable,
+    NftHelper
+{
     string public name;
     string public symbol;
     bool public paused;
@@ -75,23 +80,27 @@ contract NFTbadge is Initializable, ERC1155Upgradeable, OwnableUpgradeable, NftH
         _mint(msg.sender, id, 1, "");
     }
 
-    function finalMint() external{
+    function finalMint() external {
         for (uint256 i = 1; i <= 17; i++) {
             require(
-            balanceOf(msg.sender, i) > 0,
-            "You need to own all the Token IDs to mint the final certificate"
+                balanceOf(msg.sender, i) > 0,
+                "You need to own all the Token IDs to mint the final certificate"
             );
         }
         _mint(msg.sender, 18, 1, "");
     }
 
-    function safeTransferFrom(address from, address to, uint256 id, uint256 value, bytes memory data) public override {
-        address sender = _msgSender();
-        if (from != sender && !isApprovedForAll(from, sender)) {
-            revert ERC1155MissingApprovalForAll(sender, from);
-        }
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 id,
+        uint256 value,
+        bytes memory data
+    ) public override {
         if (from != address(0) && to != address(0)) {
-            revert("NonTransferableERC1155: Transfers between non-zero addresses are not allowed");
+            revert(
+                "NonTransferableERC1155: Transfers between non-zero addresses are not allowed"
+            );
         }
         super._safeTransferFrom(from, to, id, value, data);
     }
@@ -103,12 +112,10 @@ contract NFTbadge is Initializable, ERC1155Upgradeable, OwnableUpgradeable, NftH
         uint256[] memory values,
         bytes memory data
     ) public override {
-        address sender = _msgSender();
-        if (from != sender && !isApprovedForAll(from, sender)) {
-            revert ERC1155MissingApprovalForAll(sender, from);
-        }
         if (from != address(0) && to != address(0)) {
-            revert("NonTransferableERC1155: Transfers between non-zero addresses are not allowed");
+            revert(
+                "NonTransferableERC1155: Transfers between non-zero addresses are not allowed"
+            );
         }
         super._safeBatchTransferFrom(from, to, ids, values, data);
     }

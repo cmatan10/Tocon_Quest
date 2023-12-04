@@ -101,12 +101,12 @@ web3.eth.getBlock("<Block-Number>",console.log)
 ---
 
 ### Gas Learning Lab:
-1. **Base Gas Consumption (Overhead)**: When the function is called with the argument `0`, it uses up 42 units of gas. This represents the overhead of invoking the function without the loop's operations.
-2. **Gas Consumption for a Single Iteration**: On invoking the function with an argument of `1`, it results in a gas consumption of 234 units.
+1. **Base Gas Consumption (Overhead)**: When the function is called with the argument `0`, it uses up x units of gas. This represents the overhead of invoking the function without the loop's operations.
+2. **Gas Consumption for a Single Iteration**: On invoking the function with an argument of `1`, it results in a gas consumption of y units.
 
 Using the above data:
 ```
-Gas Per Iteration = 234 - 42 = 192 units
+Gas Per Iteration = y - x = z units
 ```
 To find the average gas consumption between 3000 and 5000:
 ```
@@ -114,9 +114,9 @@ Average Gas Consumption = (3000 + 5000) / 2 = 4000 units
 ```
 Applying this to our function's gas consumption pattern:
 ```
-42 + 192x = 4000
-=> 192x = 3958
-=> x ≈ 20.61
+x + z*n = 4000
+=> z*n = 4000 - x
+=> n ≈ (4000 - x) / z
 ```
 Thus, it is deduced that about 21 iterations are requisite to approach an average gas consumption of 4000 units.
 - Enter the number 21 in the `iterations` input box.

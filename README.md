@@ -101,8 +101,8 @@ web3.eth.getBlock("<Block-Number>",console.log)
 ---
 
 ### Gas Learning Lab:
-1. **Base Gas Consumption (Overhead)**: When the function is called with the argument `0`, it uses up x units of gas. This represents the overhead of invoking the function without the loop's operations.
-2. **Gas Consumption for a Single Iteration**: On invoking the function with an argument of `1`, it results in a gas consumption of y units.
+1. **Base Gas Consumption (Overhead)**:  When the complexOperation function is called with the argument `0`, it consumes a certain amount of gas, let's call it `x` units. This `x` represents the base gas cost for executing the function without entering the loop. This includes the cost of reading and writing to storage, and other computational overheads.
+2. **Gas Consumption for a Single Iteration**: When you invoke the function with an argument of `1`, it results in a gas consumption of `y` units. This includes the base gas cost `x` plus the gas cost of one iteration of the loop.
 
 Using the above data:
 ```
@@ -118,8 +118,8 @@ x + z*n = 4000
 => z*n = 4000 - x
 => n ≈ (4000 - x) / z
 ```
-Thus, it is deduced that about n iterations are requisite to approach an average gas consumption of 4000 units.
-- Enter the number n in the `iterations` input box.
+Thus, it is deduced that about `n` iterations are requisite to approach an average gas consumption of 4000 units.
+- Enter the number `n` in the `iterations` input box.
 - Click the `complexOperation` button and confirm the transaction.
 ---
 

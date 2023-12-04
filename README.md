@@ -118,8 +118,8 @@ x + z*n = 4000
 => z*n = 4000 - x
 => n ≈ (4000 - x) / z
 ```
-Thus, it is deduced that about 21 iterations are requisite to approach an average gas consumption of 4000 units.
-- Enter the number 21 in the `iterations` input box.
+Thus, it is deduced that about n iterations are requisite to approach an average gas consumption of 4000 units.
+- Enter the number n in the `iterations` input box.
 - Click the `complexOperation` button and confirm the transaction.
 ---
 

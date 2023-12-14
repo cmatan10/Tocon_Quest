@@ -5,7 +5,6 @@
 - [Features](#features)
 - [Vision](#vision)
 - [Solutions](#solutions)
-
   ---
 
 ## Demo

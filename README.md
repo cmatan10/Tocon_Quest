@@ -10,9 +10,7 @@
 
 ## Demo
 
-https://quest.tocon.io
-
-https://www.xrpl-tocon.xyz/xrpl-demo.mp4
+https://cmatan10.github.io/quest/
 
 ---
 
